@@ -87,7 +87,7 @@ public class House extends Building {
 
   public void showOptions() {
     super.showOptions();
-    System.out.println(" + moveIn() \n + moveOut() \n");
+    System.out.println(" + moveIn(String name) \n + moveOut(String name) \n");
 }
 
   
