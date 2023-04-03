@@ -7,6 +7,7 @@ public class House extends Building {
 
   private ArrayList<String> residents;
   private boolean hasDiningRoom;
+  private boolean hasElevator;
 
   /*
    * House constructor 
@@ -85,10 +86,29 @@ public class House extends Building {
     return description;
   }
 
+  /*
+   * 
+   */
   public void showOptions() {
     super.showOptions();
     System.out.println(" + moveIn(String name) \n + moveOut(String name) \n");
 }
+
+  /*
+   * 
+   */
+  public void goToFloor(int floorNum) {
+    if (!this.hasElevator){
+      if (floorNum-this.activeFloor!=1 || this.activeFloor-floorNum!=1){
+        throw new RuntimeException("As this building does not have an elevator, you cannot move up or down more than one floor at a time.");
+      }
+    } else{
+      super.goToFloor(floorNum);
+    }
+    }
+
+  
+
 
   
   public static void main(String[] args) {
