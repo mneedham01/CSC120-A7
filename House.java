@@ -8,17 +8,19 @@ public class House extends Building {
   private ArrayList<String> residents;
   private boolean hasDiningRoom;
   private boolean hasElevator;
+  private boolean enterOnNongroundFloor;
 
   /*
    * House constructor 
    * @param: String name, String address, int nFloors, boolean hasDining Room 
    * @returns: House 
    */
-  public House(String name, String address, int nFloors, boolean hasDiningRoom, boolean hasElevator) {
+  public House(String name, String address, int nFloors, boolean hasDiningRoom, boolean hasElevator, boolean enterOnNongroundFloor) {
     super(name, address, nFloors);
     this.residents = new ArrayList<String>();
     this.hasDiningRoom = hasDiningRoom;
     this.hasElevator =hasElevator;
+    this.enterOnNongroundFloor = enterOnNongroundFloor;
   }
 
   /** Accessor for hasDiningRoom */
@@ -108,24 +110,35 @@ public class House extends Building {
     }
     }
 
-  
-
+  /*
+   * 
+   */
+  public Building enter(int floorNum){
+    if (this.enterOnNongroundFloor){
+      this.activeFloor=floorNum;
+      System.out.println("You are now inside "+ this.name+ " on floor "+ floorNum);
+      return this;
+    } else{
+      super.enter();
+    }
+  }
 
   
   public static void main(String[] args) {
-    House morrow = new House("Morrow", "The Quad", 4, false, false);
+    House morrow = new House("Morrow", "The Quad", 4, false, false,false);
     System.out.println(morrow);
     morrow.moveIn("Jordan");
     morrow.moveOut("Jordan");
     System.out.println(morrow);
-    House king = new House("King", "The Quad", 3, true, true);
+    House king = new House("King", "The Quad", 3, true, true,false);
     System.out.println(king);
     king.showOptions();
     king.enter();
     king.goToFloor(1);
     morrow.enter();
     morrow.goToFloor(5);
-
+    House parsons= new House("Parsons","Behind Helen Hills Hills", 4, false, false, true);
+    parsons.enter(2);
   }
 
 }
