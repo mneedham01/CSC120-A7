@@ -5,6 +5,7 @@ import java.util.Hashtable;
 public class Library extends Building{
 
     private Hashtable <String, Boolean> collection;
+    private boolean hasElevator;
 
     /*
      * Library constructor 
@@ -122,10 +123,26 @@ public class Library extends Building{
       System.out.println(toPrint+"\n");
     }
 
+    /*
+     * 
+     */
     public void showOptions() {
       super.showOptions();
       System.out.println(" + addTitle(String title) \n + removeTitle(String title) \n + checkOut(String title \n + returnBook(String title) \n");
   }
+
+  /*
+   * 
+   */
+  public void goToFloor(int floorNum) {
+    if (!this.hasElevator){
+      if (floorNum-this.activeFloor!=1 || this.activeFloor-floorNum!=1){
+        throw new RuntimeException("As this building does not have an elevator, you cannot move up or down more than one floor at a time.");
+      }
+    } else{
+      super.goToFloor(floorNum);
+    }
+    }
   
     public static void main(String[] args) {
       //create a library 
