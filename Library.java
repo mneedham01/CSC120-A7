@@ -12,9 +12,10 @@ public class Library extends Building{
      * @param: name, address, number of floors 
      * @returns: Library 
      */
-    public Library(String name, String address, int nFloors) {
+    public Library(String name, String address, int nFloors, boolean hasElevator) {
       super(name, address, nFloors);
       this.collection = new Hashtable<String,Boolean>(); 
+      this.hasElevator= hasElevator;
     }
 
     /** 
@@ -146,7 +147,7 @@ public class Library extends Building{
   
     public static void main(String[] args) {
       //create a library 
-      Library neilson= new Library("Neilson", "7 Neilson Drive", 4);
+      Library neilson= new Library("Neilson", "7 Neilson Drive", 4,true);
 
       //try to add a book 
       neilson.addTitle("Charlotte's Web by E.B. White");
