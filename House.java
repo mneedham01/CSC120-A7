@@ -14,10 +14,11 @@ public class House extends Building {
    * @param: String name, String address, int nFloors, boolean hasDining Room 
    * @returns: House 
    */
-  public House(String name, String address, int nFloors, boolean hasDiningRoom) {
+  public House(String name, String address, int nFloors, boolean hasDiningRoom, boolean hasElevator) {
     super(name, address, nFloors);
     this.residents = new ArrayList<String>();
     this.hasDiningRoom = hasDiningRoom;
+    this.hasElevator =hasElevator;
   }
 
   /** Accessor for hasDiningRoom */
@@ -100,7 +101,7 @@ public class House extends Building {
   public void goToFloor(int floorNum) {
     if (!this.hasElevator){
       if (floorNum-this.activeFloor!=1 || this.activeFloor-floorNum!=1){
-        throw new RuntimeException("As this building does not have an elevator, you cannot move up or down more than one floor at a time.");
+        throw new RuntimeException("As "+this.name+ " House does not have an elevator, you cannot move up or down more than one floor at a time.");
       }
     } else{
       super.goToFloor(floorNum);
@@ -112,14 +113,18 @@ public class House extends Building {
 
   
   public static void main(String[] args) {
-    House morrow = new House("Morrow", "The Quad", 4, false);
+    House morrow = new House("Morrow", "The Quad", 4, false, false);
     System.out.println(morrow);
     morrow.moveIn("Jordan");
     morrow.moveOut("Jordan");
     System.out.println(morrow);
-    House king = new House("King", "The Quad", 3, true);
+    House king = new House("King", "The Quad", 3, true, true);
     System.out.println(king);
     king.showOptions();
+    king.enter();
+    king.goToFloor(1);
+    morrow.enter();
+    morrow.goToFloor(5);
 
   }
 
