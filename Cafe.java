@@ -94,6 +94,9 @@ public class Cafe extends Building{
         return toReturn;
     }
 
+    /*
+     * Overrides showOptions to add methods specifc to cafe 
+     */
     public void showOptions() {
         super.showOptions();
         System.out.println(" + restock(int nCoffeeOunces, int nSugarPackets, int nCreams, int nCups) \n");
