@@ -8,19 +8,17 @@ public class House extends Building {
   private ArrayList<String> residents;
   private boolean hasDiningRoom;
   private boolean hasElevator;
-  private boolean enterOnNongroundFloor;
 
   /*
    * House constructor 
    * @param: String name, String address, int nFloors, boolean hasDining Room 
    * @returns: House 
    */
-  public House(String name, String address, int nFloors, boolean hasDiningRoom, boolean hasElevator, boolean enterOnNongroundFloor) {
+  public House(String name, String address, int nFloors, boolean hasDiningRoom, boolean hasElevator) {
     super(name, address, nFloors);
     this.residents = new ArrayList<String>();
     this.hasDiningRoom = hasDiningRoom;
     this.hasElevator =hasElevator;
-    this.enterOnNongroundFloor = enterOnNongroundFloor;
   }
 
   /** Accessor for hasDiningRoom */
@@ -59,6 +57,18 @@ public class House extends Building {
     throw new RuntimeException(name+" is not a resident of "+this.name);
   }
 }
+
+  /*
+   * 
+   */
+  public void moveOut(int nResident){
+    if (nResident>this.residents.size()-1 || nResident<0){
+      throw new RuntimeException("Resident index is out of bounds.");
+    }
+    System.out.println(this.residents.get(nResident)+" has just moved out of "+this.name+".");
+    residents.remove(nResident);
+  }
+
  /*
   * Method to check if a person is a resident
   * @param: person 
@@ -110,35 +120,35 @@ public class House extends Building {
     }
     }
 
-  /*
-   * 
-   */
-  public Building enter(int floorNum){
-    if (this.enterOnNongroundFloor){
-      this.activeFloor=floorNum;
-      System.out.println("You are now inside "+ this.name+ " on floor "+ floorNum);
-      return this;
-    } else{
-      super.enter();
-    }
-  }
-
-  
   public static void main(String[] args) {
-    House morrow = new House("Morrow", "The Quad", 4, false, false,false);
+    House morrow = new House("Morrow", "The Quad", 4, false, false);
     System.out.println(morrow);
     morrow.moveIn("Jordan");
     morrow.moveOut("Jordan");
     System.out.println(morrow);
-    House king = new House("King", "The Quad", 3, true, true,false);
+    House king = new House("King", "The Quad", 3, true, true);
     System.out.println(king);
     king.showOptions();
     king.enter();
     king.goToFloor(1);
     morrow.enter();
-    morrow.goToFloor(5);
-    House parsons= new House("Parsons","Behind Helen Hills Hills", 4, false, false, true);
-    parsons.enter(2);
+    try{
+      morrow.goToFloor(5);
+    } catch (Exception e)  {
+        System.out.println(e);
+    }
+    House parsons= new House("Parsons","Behind Helen Hills Hills", 4, false, false);
+    parsons.moveIn("Maggie");
+    parsons.moveIn("Claire");
+    parsons.moveIn("Poppy");
+    parsons.moveIn("Rowan");
+    parsons.moveOut(1);
+
+    try {
+      parsons.moveOut(5);
+    } catch (Exception e) {
+      System.out.println(e);
+    }
   }
 
 }
