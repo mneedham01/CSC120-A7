@@ -146,7 +146,7 @@ public class Library extends Building{
     }
 
     /*
-     * 
+     * Overrides showOptions to add Library methods 
      */
     public void showOptions() {
       super.showOptions();
@@ -154,7 +154,8 @@ public class Library extends Building{
   }
 
   /*
-   * 
+   * Overrides goToFloor method to make sure libraries without elevators can't move more than one floor at a time
+   * @param: int floorNum
    */
   public void goToFloor(int floorNum) {
     if (!this.hasElevator){
