@@ -18,6 +18,26 @@ public class Library extends Building{
       this.hasElevator= hasElevator;
     }
 
+    /*
+     * Library constructor with just name 
+     * @param: name
+     * @returns: Library 
+     */
+    public Library(String name){
+      this.name=name;
+      this.collection = new Hashtable<String,Boolean>();
+    }
+
+    /*
+     * Library constructor with name and nFloors 
+     * @param: name, nFloors
+     * @returns: Library
+     */
+    public Library(String name, int nFloors){
+      this.name=name;
+      this.collection= new Hashtable<String,Boolean>();
+    }
+
     /** 
      * Method to add a book to library 
      * @param: book title 
@@ -44,6 +64,7 @@ public class Library extends Building{
         return title;
       }
     }
+
 
     /*
      * Method to check out book if the library owns it and if it is available. 
@@ -205,8 +226,10 @@ public class Library extends Building{
       }
       
       //check whether it returns containsTitle if the library owns the book 
-      System.out.println("According to containsTitle, the fact that it owns Charlotte's Web is: "+neilson.containsTitle("Charlotte's Web"));
+      System.out.println("According to containsTitle, the fact that it owns Charlotte's Web is: "+neilson.containsTitle("Charlotte's Web")+"\n");
       neilson.showOptions();
+
+      Library josten= new Library("Josten");
   
 
 
