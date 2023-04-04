@@ -50,11 +50,11 @@ YES 2 pt: Complies with style guidelines (missing items 1 pt each):
 
       YES Clear and consistent indentation of bracketed sections
 
-      _____ Adheres to Java conventions on naming & capitalization
+      YES Adheres to Java conventions on naming & capitalization
 
-      _____ Methods & variables all have clear and accurate names
+      YES Methods & variables all have clear and accurate names
 
-      _____ Methods avoid confusing side effects
+      YES Methods avoid confusing side effects
 
 _____ 1 pt: All required files included with submission (including completed `rubric.md` file)
 
