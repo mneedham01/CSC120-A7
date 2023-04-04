@@ -95,6 +95,17 @@ public class Cafe extends Building{
     }
 
     /*
+     * 
+     */
+    public void goToFloor(int floorNum) {
+        if (floorNum>1){
+            throw new RuntimeException("In a cafe, you cannot move off the first floor.");
+        }
+        super.goToFloor(floorNum);
+
+    }
+
+    /*
      * Overrides showOptions to add methods specifc to cafe 
      */
     public void showOptions() {
@@ -111,6 +122,12 @@ public class Cafe extends Building{
         compass.showOptions();
         compass.sellCoffee(12);
         compass.restock(100);
+        try{
+            compass.goToFloor(3);
+        } catch (Exception e){
+            System.out.println(e); 
+        }
+        
         
     }
     
