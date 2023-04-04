@@ -48,6 +48,24 @@ public class Cafe extends Building{
     }
 
     /*
+     * Method to sell coffee without dealing with sugar packets and creams. Restocks if not enough coffee or cups available. 
+     * @param: size of coffee 
+     */
+    private void sellCoffee(int size){
+        if (this.nCoffeeOunces<size){
+        System.out.println("Not enough coffee, restocking now.");
+        this.restock(50,0,0,0);
+    } 
+    if (this.nCups<1){
+        System.out.println("Not enough cups, restocking now.");
+        this.restock(0,0,0,50);
+    }
+        this.nCoffeeOunces -= size;
+        this.nCups -=1;
+        System.out.println("Cup of coffee sold.");
+    }
+
+    /*
      * Method to restock  
      * @param: number of coffee ounces, number of sugar packets, number of creams, number of cups 
      */
@@ -56,6 +74,14 @@ public class Cafe extends Building{
         this.nSugarPackets += nSugarPackets;
         this.nCreams += nCreams;
         this.nCups += nCups;
+    }
+
+    /*
+     * Method to just restock the coffee ounces 
+     * @param: number of coffee ounces
+     */
+    private void restock(int nCoffeeOunces){
+        this.nCoffeeOunces+=nCoffeeOunces;
     }
     
     /** Method to print out information and current stock levels in the cafe.  */
@@ -80,6 +106,8 @@ public class Cafe extends Building{
             System.out.println(compass);
           } 
         compass.showOptions();
+        compass.sellCoffee(12);
+        compass.restock(100);
         
     }
     
