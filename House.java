@@ -110,7 +110,7 @@ public class House extends Building {
   }
 
   /*
-   * 
+   * Overrides showOptions to add methods from House
    */
   public void showOptions() {
     super.showOptions();
@@ -118,7 +118,8 @@ public class House extends Building {
 }
 
   /*
-   * 
+   * Overrides goToFloor method to check that houses without elevators can't move more than one floor at a time
+   * @param: int floorNum
    */
   public void goToFloor(int floorNum) {
     if (!this.hasElevator){
