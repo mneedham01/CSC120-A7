@@ -56,6 +56,6 @@ YES 2 pt: Complies with style guidelines (missing items 1 pt each):
 
       YES Methods avoid confusing side effects
 
-_____ 1 pt: All required files included with submission (including completed `rubric.md` file)
+YES 1 pt: All required files included with submission (including completed `rubric.md` file)
 
-_____ 1 pt: `reflection.md` contains your reflection on the assignment
+YES 1 pt: `reflection.md` contains your reflection on the assignment
