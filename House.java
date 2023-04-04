@@ -42,7 +42,17 @@ public class House extends Building {
     }
     // if we're good to go, add to roster
     this.residents.add(name);
-    System.out.println(name + " has just moved into " + this.name + "! Go say hello :-)");
+    System.out.println(name + " just moved into " + this.name + "! Go say hello :-)");
+  }
+  
+  /*
+   *
+   */
+  public void moveIn(int nResidents){
+    for (int i = 0; i < nResidents-1; i++) {
+      this.residents.add("Resident "+i);
+    }
+    System.out.println(nResidents+" people have just moved into "+ this.name);
   }
 
   /** Method to remove resident from House if they are a resident
@@ -149,6 +159,8 @@ public class House extends Building {
     } catch (Exception e) {
       System.out.println(e);
     }
+
+    king.moveIn(50);
   }
 
 }
