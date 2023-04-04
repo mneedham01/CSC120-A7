@@ -95,7 +95,8 @@ public class Cafe extends Building{
     }
 
     /*
-     * 
+     * Overrides goToFloor
+     * @param: int floorNum
      */
     public void goToFloor(int floorNum) {
         if (floorNum>1){
